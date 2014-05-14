@@ -80,6 +80,10 @@
     self.tableView.scrollEnabled = NO;
     self.navigationItem.rightBarButtonItem.customView.userInteractionEnabled = NO;
     self.navigationItem.leftBarButtonItem.customView.userInteractionEnabled = NO;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.navigationItem.rightBarButtonItem.customView.alpha = 0.1;
+        self.navigationItem.leftBarButtonItem.customView.alpha = 0.1;
+    }];
     
     NSNumber *tag = (NSNumber *)[[notification userInfo] objectForKey:SelectedTextFieldTag];
     inputRow = [tag intValue] - 1;
@@ -95,6 +99,10 @@
 {
     self.navigationItem.rightBarButtonItem.customView.userInteractionEnabled = YES;
     self.navigationItem.leftBarButtonItem.customView.userInteractionEnabled = YES;
+    [UIView animateWithDuration:0.3f animations:^{
+        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
+    }];
     
     //关键：haveChange要设置为NO,反之没有点击虚拟键盘中的Done的时候，数据就显示出来了
     haveChange = NO;
