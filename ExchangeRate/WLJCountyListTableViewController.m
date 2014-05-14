@@ -39,11 +39,6 @@ static NSString *reuseCellIdentifier = @"reuseCellIdentifier";
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:reuseCellIdentifier];
     
 }
@@ -51,7 +46,6 @@ static NSString *reuseCellIdentifier = @"reuseCellIdentifier";
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
@@ -116,7 +110,6 @@ static NSString *reuseCellIdentifier = @"reuseCellIdentifier";
     //添加国家名称
     
     UILabel *countryNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kMarginSize + kimageViewWidth, cell.frame.size.height / 2 - kCountryNameLabelHeight / 2, kCountryNameLabelWidth, kCountryNameLabelHeight)];
-//    countryNameLabel.backgroundColor = [UIColor redColor];
     countryNameLabel.textAlignment = NSTextAlignmentLeft;
 
     countryNameLabel.text = [countyNameList objectAtIndex:indexPath.row];
@@ -127,17 +120,11 @@ static NSString *reuseCellIdentifier = @"reuseCellIdentifier";
     
     CGFloat rateLabelWidth = cell.frame.size.width - 6*kMarginSize - kimageViewWidth - kCountryNameLabelWidth;
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(3*kMarginSize + kimageViewWidth + kCountryNameLabelWidth, cell.frame.size.height / 2 - kCountryNameLabelHeight / 2, rateLabelWidth, kmoneyTextFieldHeight)];
-//    rateLabel.backgroundColor = [UIColor redColor];
     rateLabel.textAlignment = NSTextAlignmentRight;
     NSString *exchangeRate = [NSString stringWithFormat:@"%.3f",[(NSNumber *)[[(WLJMasterViewController *)self.delegate countryNameRate] objectForKey:[countyNameList objectAtIndex:indexPath.row]] doubleValue]];
     
     rateLabel.text = exchangeRate;
     [cell.contentView addSubview:rateLabel];
-    
-//    //曾经选中过的单元要标记出来
-//    if([[[(WLJMasterViewController *)self.delegate countryTag] objectAtIndex:indexPath.row] boolValue] == YES){
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }
     return cell;
 }
 - (NSComparisonResult)compareKey{

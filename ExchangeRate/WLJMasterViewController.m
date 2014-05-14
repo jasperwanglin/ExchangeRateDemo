@@ -132,17 +132,6 @@
 {
     self.tableView.scrollEnabled = YES;
     if (inputRow != -1) {
-//        //获得国家的名称
-//        NSString *countryName = [self.selectedCountry objectAtIndex:inputRow];//非常关键
-//        WLJCountryTableViewCell *cell = (WLJCountryTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:inputRow inSection:0]];
-//        [cell.moneyTextField resignFirstResponder];
-//        //获得输入的金额
-//        NSString *money = cell.moneyTextField.text;
-//        double mon = [money doubleValue];
-//        //获得汇率
-//        double rate = [(NSString *)[self.countryNameRate objectForKey:countryName] doubleValue];
-//        //转成人民币
-        
         //关键：为了滑动之后，也可以显示后面的单元，haveChange设置为YES
         haveChange = YES;
         //迭代
@@ -156,7 +145,6 @@
                 //转换---重大bug解决，不能用exchangecell获取国家的名称，因为这时候，cell还没有显示在界面上，名称还是空的
                 exchangeCell = (WLJCountryTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
                 exchange = [[self.countryNameRate objectForKey:(NSString *)[self.selectedCountry objectAtIndex:i]] doubleValue];//非常关键
-//                NSLog(@"%@ : %f",(NSString *)[self.countryNameRate objectForKey:exchangeCell.countryNameLabel.text], exchange);
                 exchangeCell.moneyTextField.text = [NSString stringWithFormat:@"%.3f",exchangeRMB * exchange];
                 NSLog(@"%d: %f * %f = %@",i ,exchangeRMB ,exchange ,[NSString stringWithFormat:@"%.3f",exchangeRMB * exchange]);
             }
@@ -167,18 +155,8 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-//- (void)insertNewObject:(id)sender
-//{
-//    if (!_objects) {
-//        _objects = [[NSMutableArray alloc] init];
-//    }
-//    [_objects insertObject:[NSDate date] atIndex:0];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
 
 #pragma mark - Table View
 
@@ -202,26 +180,6 @@
     cell.moneyTextField.tag = indexPath.row + 1;
     cell.moneyTextField.text = nil;
     //判断是否已经存在转化了，为了防止滚动的时候，cell重新回到界面的时候，数值不进了以及重选国家的时候，输入框都置为空
-    //下面是修改1
-//    if (inputRow == -1) {
-//        cell.moneyTextField.text = nil;
-//    }else{
-//        //已经存在转换了，要重新复制
-//        //先换算成人民币
-////        WLJCountryTableViewCell *beExchangeCell = (WLJCountryTableViewCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:inputRow inSection:0]];
-////        NSString *money = beExchangeCell.moneyTextField.text;
-////        double mon = [money doubleValue];
-////        NSString *countryName = (NSString *)[self.selectedCountry objectAtIndex:inputRow];
-////        double rate = [[self.countryNameRate objectForKey:countryName] doubleValue];
-//
-//        double exchangeRMB = RMB;//mon / rate;
-//        NSLog(@"人民币：%f",exchangeRMB);
-//        
-//        double exchange = [[self.countryNameRate objectForKey:[self.selectedCountry objectAtIndex:indexPath.row]] doubleValue];
-//        NSLog(@"%f",exchange);
-//        
-//        cell.moneyTextField.text = [NSString stringWithFormat:@"%.3f",exchangeRMB * exchange];
-//    }
     
     if (inputRow != -1 && haveChange == YES) {
         double exchangeRMB = RMB;//mon / rate;

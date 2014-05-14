@@ -29,7 +29,6 @@
         
         //国家名称显示
         self.countryNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(2*kMarginSize + kimageViewWidth, self.frame.size.height / 2 - kCountryNameLabelHeight / 2, kCountryNameLabelWidth, kCountryNameLabelHeight)];
-//        self.countryNameLabel.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:self.countryNameLabel];
         
         //金额输入款设置
