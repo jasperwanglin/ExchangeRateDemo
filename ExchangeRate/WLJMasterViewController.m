@@ -233,6 +233,7 @@
             trace++;
         }
         inputRow = -1;
+        haveChange = NO;
         [self.countryTag replaceObjectAtIndex:trace withObject:[NSNumber numberWithBool:NO]];
         
         [self.selectedCountry removeAllObjects];
